@@ -1,0 +1,28 @@
+The Project Roadmap
+We are going to build this in five distinct phases to manage the massive volume of Java code.
+
+Phase 1: The Relational Web
+We build the data layer first. This involves creating the Entities and Repositories for Ship, Container, and Parcel.
+We will establish strict One-to-Many relationships. A Ship has many Containers, and a Container has many Parcels.
+
+Phase 2: The Customs Validation Engine
+Before a Parcel is allowed onto a Ship, it must pass customs.
+We will build a complex Service layer that checks the weight limits of the Container, verifies the Harmonized Tariff Codes,
+and ensures hazardous materials are not flagged.
+This is where you write heavy, defensive Java logic.
+
+Phase 3: The Knapsack Optimizer
+This is the brain. We will build an algorithm inside the Service layer.
+When a user queries a specific Container and provides a massive list of pending Parcels in the warehouse,
+your algorithm will calculate the exact combination of Parcels to pack that maximizes profit without breaking the Container's weight limit.
+
+Phase 4: Data Transfer Objects (DTOs)
+To handle the massive JSON payloads, we will build DTOs.
+Instead of exposing our raw database Entities to the internet,
+we build specific Java classes whose only job is to safely transport data from the Waiter to the Chef.
+
+Phase 5: The Controllers
+We wire up the Front Desk.
+We will create endpoints to register new ships, load individual parcels,
+trigger the customs validation, and execute the Knapsack optimization.
+
